@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('starter', ['ionic'])
+var app = angular.module('codhab', ['ionic','codhab.controllers.appcontroller'])
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -23,22 +23,31 @@ app.run(function($ionicPlatform) {
     }
   });
 });
+
 app.config(function ($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
 	$stateProvider
-		.state('home', {
-			url: "/home",
-			cache: false,
-			templateUrl: "templates/home.html"
+		.state('app', {
+			url: "/app",
+      abstract: true,
+			templateUrl: "views/app/side.html"
 		})
+    .state('app.home', {
+      url: "/playlist",
+      views:{
+        'menuContent':{
+          templateUrl: "views/app/home.html"
+        }
+      }
+    })
     .state('tab', {
       url: "/tab",
-      abstract: false,
-      templateUrl: "templates/tabs.html"
+      abstract: true,
+      templateUrl: "views/app/tabs.html"
     })
 		//TODO
 	;
-       $ionicConfigProvider.tabs.position('bottom')
+    //   $ionicConfigProvider.tabs.position('bottom')
 	// if none of the above states are matched, use this as the fallback
-	$urlRouterProvider.otherwise('/home');
+	$urlRouterProvider.otherwise('/app/home');
 
 });
