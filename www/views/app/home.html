@@ -1,10 +1,8 @@
-<ion-view >
+<ion-view>
   <ion-nav-buttons side="left">
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
   <ion-content scroll="false" >
-
-  <ion-nav-view name="tab-meals" >
     <div class="row">
       <div class="col padding home-points">
         <p>PONTUAÇÃO - <span class="energized">4865987</span></p>
@@ -14,13 +12,13 @@
     </div>
     <div class="row">
         <div class="col col-50">
-          <button class="button btn-nav-codhab" ui-sref="tab.newpost">
+          <button class="button btn-nav-codhab" ui-sref="#">
             <span class="btn-codhab-icon ion-ios-email-outline"></span>
             <span>Mensagem</span>
           </button>
         </div>
         <div class="col col-50">
-          <button class="button btn-nav-codhab" ui-sref="tab.newpost">
+          <button class="button btn-nav-codhab" ui-sref="#">
             <span class="btn-codhab-icon ion-ios-calendar-outline"></span>
             <span>Agendamento</span>
           </button>
@@ -28,38 +26,18 @@
     </div>
     <div class="row">
       <div class="col col-50">
-        <button class="button btn-nav-codhab" ui-sref="tab.newpost">
+        <button class="button btn-nav-codhab" ui-sref="#">
           <span class="btn-codhab-icon ion-ios-chatboxes-outline"></span>
-          <span>esqueci</span>
+          <span>Verificar</span>
         </button>
       </div>
       <div class="col col-50">
-        <button class="button btn-nav-codhab" ui-sref="tab.newpost">
-          <span class="btn-codhab-icon ion-ios-compose-outline"></span>
-          <span>esqueci2</span>
+        <button class="button btn-nav-codhab" ui-sref="app.map">
+          <span class="btn-codhab-icon ion-ios-chatboxes-outline"></span>
+          <span>Verificar</span>
         </button>
       </div>
     </div>
-  </ion-nav-view>
    </ion-content>
 
 </ion-view>
-
-<ion-tabs class="tabs-icon-top tabs-background-positive tabs-color-light">
-
-
-	<ion-tab title="Report de Obras"
-	         icon-off="ion-ios-camera-outline"
-	         icon-on="ion-ios-camera"
-	         ui-sref="tab.track" >
-		<ion-nav-view name="tab-track" ></ion-nav-view>
-	</ion-tab>
-
-	<ion-tab title="Configurações"
-	         icon-off="ion-ios-gear-outline"
-	         icon-on="ion-ios-gear"
-	         ui-sref="tab.account" >
-		<ion-nav-view name="tab-account" ></ion-nav-view>
-	</ion-tab>
-
-</ion-tabs>

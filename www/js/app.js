@@ -32,10 +32,18 @@ app.config(function ($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
 			templateUrl: "views/app/side.html"
 		})
     .state('app.home', {
-      url: "/playlist",
+      url: "/home",
       views:{
-        'menuContent':{
+        'home':{
           templateUrl: "views/app/home.html"
+        }
+      }
+    })
+    .state('app.map',{
+      url: "/map",
+      views:{
+        'home':{
+          templateUrl: "views/app/map/map.html"
         }
       }
     })
