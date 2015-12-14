@@ -1,0 +1,45 @@
+<ion-view view-title="Login"
+          hide-back-button="true">
+	<ion-content padding="true"
+	             scroll="false">
+		<!-- Form with floating labels -->
+		<form ng-submit="login(loginForm)" novalidate="novalidate" name="loginForm">
+			<ion-list>
+				<label class="item item-input item-floating-label" ng-class="{'has-error':loginForm.email.$invalid}">
+					<span class="input-label">Email</span>
+					<input type="email"
+					       placeholder="Email"
+					       ng-model="formData.email"
+                 ng-required="true"
+                 name="email">
+				</label>
+        		<div class="form-errors" ng-messages="loginForm.email.$error">
+        			<div ng-messages-include="templates/form-errors.html"></div>
+        		</div>
+				<label class="item item-input item-floating-label" ng-class="{'has-error':loginForm.password.$invalid}">
+					<span class="input-label">Password</span>
+					<input type="password"
+					       placeholder="Password"
+					       ng-model="formData.password"
+                 ng-required="true"
+                 name="password"
+                 ng-minlength="6">
+				</label>
+				<div class="form-errors" ng-messages="loginForm.password.$error">
+        			<div ng-messages-include="templates/form-errors.html"></div>
+        			<div class='form-error' ng-message="min-lenght">Insira uma senha com no mínimo 6 caracteres</div>
+        		</div>
+			</ion-list>
+			<button class="button button-royal button-block"
+			        type="submit">Logar
+			</button>
+		</form>
+		<p class="text-center">
+			Não possui uma conta?
+			<a nav-direction="enter"
+			   ui-sref="signup">Criar
+			</a>
+		</p>
+
+	</ion-content>
+</ion-view>

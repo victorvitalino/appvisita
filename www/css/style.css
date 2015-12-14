@@ -3,3 +3,11 @@
 	width: 100%;
 	height: 175px;
 }
+.scroll {
+    height: 100%;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}

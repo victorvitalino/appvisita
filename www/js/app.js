@@ -3,7 +3,13 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('codhab', ['ionic','codhab.controllers.appcontroller'])
+var app = angular.module('codhab', ['ionic',
+'ngCordova',
+'codhab.controllers.app',
+'codhab.controllers.map',
+'codhab.controllers.login',
+'codhab.services.auth'
+])
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -21,11 +27,23 @@ app.run(function($ionicPlatform) {
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+
+    Parse.initialize("0nHHDsgXpUZieEkv46JhEKgk8fXUkKn8aDNpyqZP","r4pMXbjMUVCrqcSzh25W1J1U3yJ5U4rjG6kdCwry")
   });
 });
 
 app.config(function ($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
 	$stateProvider
+    .state('signup',{
+      url: "/signup",
+      templateUrl:"views/login/signup.html",
+      controller: 'SignupCtrl'
+    })
+    .state('login',{
+      url: "/login",
+      templateUrl:"views/login/login.html",
+      controller: 'LoginCtrl'
+    })
 		.state('app', {
 			url: "/app",
       abstract: true,
@@ -43,7 +61,8 @@ app.config(function ($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
       url: "/map",
       views:{
         'home':{
-          templateUrl: "views/app/map/map.html"
+          templateUrl: "views/app/map/map.html",
+          controller: 'MapCtrl'
         }
       }
     })
@@ -54,6 +73,7 @@ app.config(function ($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
     })
 		//TODO
 	;
+
     //   $ionicConfigProvider.tabs.position('bottom')
 	// if none of the above states are matched, use this as the fallback
 	$urlRouterProvider.otherwise('/app/home');

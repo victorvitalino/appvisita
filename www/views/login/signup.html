@@ -1,0 +1,44 @@
+<ion-view title="Criar Conta">
+    <ion-content padding="true" class="has-header">
+        <form name="signupForm"
+    		      novalidate="novalidate"
+    		      ng-submit="signup(signupForm)">
+            <ion-list>
+                <label class="item item-input" ng-class="{'has-error':signupForm.name.$invalid}">
+                    <span class="input-label">Nome</span>
+                    <input type="text" placeholder="Preencha com um nome válido"
+                   name="name"
+   					       ng-model="formData.name"
+   					       ng-required="true">
+                </label>
+                <div class="form-errors"
+                     ng-messages="signupForm.name.$error">
+                     <div ng-messages-include="errors/form-errors.html" ></div>
+                </div >
+                <label class="item item-input" ng-class="{'has-error':signupForm.email.$invalid}">
+                    <span class="input-label">Email</span>
+                    <input type="email" placeholder="Preencha com um email válido"
+                    name="email"
+                    ng-model="formData.email"
+                    ng-required="true" >
+                </label>
+                <div class="form-errors"
+                     ng-messages="signupForm.email.$error">
+                     <div ng-messages-include="templates/form-errors.html" ></div>
+                </div >
+                <label class="item item-input">
+                    <span class="input-label">Senha</span>
+                    <input type="password" placeholder="Mínimo 6 caracteres" ng-model="formData.password"
+                    ng-required="true"
+                    ng-minlength="6"
+                    name="password">
+                </label>
+                <div class="form-errors"
+                     ng-messages="signupForm.password.$error">
+                    <div ng-messages-include="templates/form-errors.html" ></div>
+                </div >
+            </ion-list>
+            <button class="button button-stable button-block" type="submit">Criar</button>
+        </form>
+    </ion-content>
+</ion-view>

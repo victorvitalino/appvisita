@@ -28,6 +28,13 @@ $dark:                            #444 !default;
 .btn-nav-codhab:hover {
   color: #000 !important; }
 
+.scroll {
+  height: 100%; }
+
+#map {
+  width: 100%;
+  height: 100%; }
+
 .button-home {
   cursor: pointer;
   text-align: center;
