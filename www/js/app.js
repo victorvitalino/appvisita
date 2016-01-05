@@ -5,10 +5,16 @@
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('codhab', ['ionic',
 'ngCordova',
+'ngMessages',
+'angularMoment',
+'parse-angular',
+'parse-angular.enhance',
 'codhab.controllers.app',
 'codhab.controllers.map',
 'codhab.controllers.login',
-'codhab.services.auth'
+'codhab.controllers.report',
+'codhab.services.auth',
+'codhab.services.ReportService'
 ])
 
 app.run(function($ionicPlatform) {
@@ -28,11 +34,28 @@ app.run(function($ionicPlatform) {
       StatusBar.styleDefault();
     }
 
-    Parse.initialize("0nHHDsgXpUZieEkv46JhEKgk8fXUkKn8aDNpyqZP","r4pMXbjMUVCrqcSzh25W1J1U3yJ5U4rjG6kdCwry")
+    Parse.initialize("0nHHDsgXpUZieEkv46JhEKgk8fXUkKn8aDNpyqZP", "r4pMXbjMUVCrqcSzh25W1J1U3yJ5U4rjG6kdCwry");
+
+      window.fbAsyncInit = function() {
+          Parse.FacebookUtils.init({
+              appId      : '1248184141874382',
+              version    : 'v2.3',
+              xfbml      : true
+          });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+
   });
 });
 
-app.config(function ($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+app.config(function ($stateProvider, $urlRouterProvider,$ionicConfigProvider,  $cordovaFacebookProvider) {
 	$stateProvider
     .state('signup',{
       url: "/signup",
@@ -53,7 +76,8 @@ app.config(function ($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
       url: "/home",
       views:{
         'home':{
-          templateUrl: "views/app/home.html"
+          templateUrl: "views/app/home.html",
+          controller: 'AppCtrl'
         }
       }
     })
@@ -66,16 +90,24 @@ app.config(function ($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
         }
       }
     })
+    .state('app.report',{
+      url: "/report",
+      views:{
+        'home':{
+          templateUrl: "views/app/report/report.html",
+          controller: 'reportCreateCtrl'
+        }
+      }
+    })
     .state('tab', {
       url: "/tab",
       abstract: true,
       templateUrl: "views/app/tabs.html"
     })
-		//TODO
 	;
 
     //   $ionicConfigProvider.tabs.position('bottom')
 	// if none of the above states are matched, use this as the fallback
-	$urlRouterProvider.otherwise('/app/home');
+	$urlRouterProvider.otherwise('/login');
 
 });

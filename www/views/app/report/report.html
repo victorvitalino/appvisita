@@ -1,0 +1,60 @@
+<ion-view view-title="Reporte de Obras">
+	<ion-nav-buttons>
+		<button class="button button-icon ion-camera" ng-click="addPicture()"></button>
+	</ion-nav-buttons>
+	<ion-content>
+		<form name="createForm"
+		      novalidate="novalidate"
+		      ng-submit="trackReport(createForm)"
+		      class="create-form">
+			<ion-list>
+				<div class="padding">
+						<!-- Category -->
+						<label class="item item-input item-select"
+						       ng-class="{'has-error':createForm.category.$invalid}">
+							<div class="input-label">
+								Tipo do Problema
+							</div>
+							<select name="category"
+							        ng-model="formData.category"
+							        ng-required="true">
+								<option selected
+								        value="">Selecione...
+								</option>
+								<option value="1">Rachadura</option>
+								<option value="2">Infiltração</option>
+								<option value="3">Fiação Elétrica</option>
+							</select>
+						</label>
+						<div class="form-errors" ng-messages="createForm.category.$error">
+								<div ng-messages-include="views/errors/form-errors.html"></div>
+						</div>
+				</div>
+				<!-- Title -->
+			<div class="padding">
+					<label class="item item-input item-stacked-label" ng-class="{'has-error':createForm.title.$invalid}">
+						<span class="input-label">Descrição</span>
+						<input type="text"
+						       name="title"
+						       ng-model="formData.title"
+						       ng-required="true">
+					</label>
+					<div class="form-errors" ng-messages="createForm.title.$error">
+	        	<div ng-messages-include="views/errors/form-errors.html"></div>
+	        </div>
+				</div>
+
+
+			<div class="padding" ng-show="formData.picture">
+				<div class="picture">
+					<img ng-src="data:image/jpeg;base64,{{formData.picture}}"
+						alt="" />
+				</div>
+			</div>
+
+			<div class="padding">
+				<button class="button button-positive button-block" type="submit"> Reportar </button>
+			</div>
+		</form>
+	</ion-content>
+</ion-view>

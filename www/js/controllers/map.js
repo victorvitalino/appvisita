@@ -1,5 +1,7 @@
 var app = angular.module('codhab.controllers.map', []);
 app.controller('MapCtrl', function($scope, $state, $cordovaGeolocation) {
+
+  console.log('oi');
   var options = {timeout: 10000, enableHighAccuracy: true};
 
     $cordovaGeolocation.getCurrentPosition(options).then(function(position){

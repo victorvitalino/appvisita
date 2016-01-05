@@ -24,6 +24,14 @@ app.service('AuthService', function ($q, $ionicPopup) {
 			return d.promise;
 		},
 		signup: function (email, name, password) {
+
+			// Verifica se o usuário esta logado.
+			var currentUser = Parse.User.current();
+							 if (currentUser) {
+									 Parse.User.logOut();
+							 }
+
+
 			var d = $q.defer();
 			var user = new Parse.User();
 			user.set('username', email);

@@ -14,8 +14,26 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
-$energized: #387ef5;
+$royal: #73C8A9;
+$positive: #73C8A9;
+$dark: #373B44;
+$stable: #DEE1B6;
+$assertive: #BD5532;
+@import url('http://fonts.googleapis.com/css?family=Domine:400,700');
+$font-family-base: 'Domine';
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
 // The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";
+@import "www/lib/ionic/scss/ionic";
+@import "www/scss/form.scss";
+@import "www/scss/styles.scss";
+
+
+// Mod
 .btn-nav-codhab{
 	width: 100%;
 	height: 175px;
@@ -63,7 +81,3 @@ $energized: #387ef5;
   font-weight: bold;
   color: #818285;
 }
-$ionicons-font-path: "../lib/ionic/fonts" !default;
-
-// Include all of Ionic
-@import "www/lib/ionic/scss/ionic";

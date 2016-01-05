@@ -13,7 +13,7 @@
                 </label>
                 <div class="form-errors"
                      ng-messages="signupForm.name.$error">
-                     <div ng-messages-include="errors/form-errors.html" ></div>
+                     <div ng-messages-include="views/errors/form-errors.html" ></div>
                 </div >
                 <label class="item item-input" ng-class="{'has-error':signupForm.email.$invalid}">
                     <span class="input-label">Email</span>
@@ -24,7 +24,7 @@
                 </label>
                 <div class="form-errors"
                      ng-messages="signupForm.email.$error">
-                     <div ng-messages-include="templates/form-errors.html" ></div>
+                     <div ng-messages-include="views/errors/form-errors.html" ></div>
                 </div >
                 <label class="item item-input">
                     <span class="input-label">Senha</span>
@@ -35,7 +35,7 @@
                 </label>
                 <div class="form-errors"
                      ng-messages="signupForm.password.$error">
-                    <div ng-messages-include="templates/form-errors.html" ></div>
+                    <div ng-messages-include="views/errors/form-errors.html" ></div>
                 </div >
             </ion-list>
             <button class="button button-stable button-block" type="submit">Criar</button>

@@ -16,6 +16,10 @@
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
+    	<script src="lib/angular-messages/angular-messages.min.js"></script>
+      <script src="lib/moment/moment.js"></script>
+      <script src="lib/angular-moment/angular-moment.js"></script>
+
     <script src="https://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
     <script src="lib/parse-angular-patch/dist/parse-angular.js"></script>
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyC19AcSjRaoMzPqsBOc7n6S09fs-hOY4Z4"></script>
@@ -24,7 +28,11 @@
     <script src="js/controllers/map.js"></script>
     <script src="js/controllers/login.js"></script>
     <script src="js/controllers/account.js"></script>
+    <script src="js/controllers/report.js"></script>
     <script src="js/services/auth.js"></script>
+    <script src="js/services/ReportService.js"></script>
+
+    </script>
 
   </head>
   <body ng-app="codhab">
@@ -33,4 +41,5 @@
     <ion-nav-view></ion-nav-view>
 
   </body>
+  <div id="fb-root"></div>
 </html>
