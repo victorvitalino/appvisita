@@ -14,8 +14,9 @@ app.controller('reportCreateCtrl', function ($scope,
      $scope.resetFormData = function(){
        $scope.formData = {
          'title': '',
-         'local': '',
-         'picture': null
+         'location': '',
+         'picture': null,
+         'category': null
        };
      };
      $scope.resetFormData();
@@ -25,8 +26,8 @@ app.controller('reportCreateCtrl', function ($scope,
        if (form.$valid){
          console.log("MealCreateCtrl::trackMeal");
 
-         $ionicLoading.show();
-         ReportService.track($scope.formData).then(function(){
+           $ionicLoading.show();
+           ReportService.track($scope.formData).then(function(){
            $scope.resetFormData();
            $ionicLoading.hide();
            $state.go("app.report");

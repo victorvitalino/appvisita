@@ -31,7 +31,7 @@ app.service("ReportService", function ($q, AuthService) {
 		'track': function (data) {
 			self.isSaving = true;
 			var d = $q.defer();
-
+			var point = new Parse.GeoPoint({latitude: 40.0, longitude: -30.0});
 			var Report = Parse.Object.extend("Report");
 			var user = AuthService.user;
 			var file = data.picture ? new Parse.File("photo.jpg", {base64: data.picture}) : null;
@@ -42,6 +42,7 @@ app.service("ReportService", function ($q, AuthService) {
 			report.set("picture", file);
 			report.set("title", data.title);
 			report.set("created", new Date());
+			report.set("location", point);
 
 			report.save(null,{
 					success: function(){
