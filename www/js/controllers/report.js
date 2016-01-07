@@ -9,14 +9,14 @@ app.controller('reportCreateCtrl', function ($scope,
    $ionicPopup,
    $ionicLoading,
    $cordovaCamera,
+   $cordovaGeolocation,
    ReportService) {
 
      $scope.resetFormData = function(){
        $scope.formData = {
          'title': '',
-         'location': '',
-         'picture': null,
-         'category': null
+         'lat': '',
+         'picture': null
        };
      };
      $scope.resetFormData();
@@ -24,22 +24,32 @@ app.controller('reportCreateCtrl', function ($scope,
      $scope.trackReport = function (form) {
 
        if (form.$valid){
-         console.log("MealCreateCtrl::trackMeal");
-
-           $ionicLoading.show();
+         $ionicLoading.show();
+         //$scope.addGeoLocation();
            ReportService.track($scope.formData).then(function(){
-           $scope.resetFormData();
-           $ionicLoading.hide();
-           $state.go("app.report");
-         });
+             $scope.resetFormData();
+             $ionicLoading.hide();
+             $state.go("app.report");
+           });
        }
      };
+
+     $scope.addGeoLocation = function (){
+       $cordovaGeolocation.getCurrentPosition({timeout:10000, enableHighAccuracy:false})
+       .then(function(position){
+      	$scope.formData.lat = position.coords.latitude;
+        $scope.formData.lon = position.coords.longitude;
+        console.log($scope.formData.lat);
+      }, function (err){
+        console.log(err);
+      });
+     }
 
      $scope.addPicture = function () {
        var options = {
          quality: 50,
          destinationType: Camera.DestinationType.DATA_URL,
-         sourceType: Camera.PictureSourceType.PHOTOLIBRARY, // Mudar para CAMERA, quando for para produção e PHOTOLIBRARY para desenvolvimento
+         sourceType: Camera.PictureSourceType.CAMERA, // Mudar para CAMERA, quando for para produção e PHOTOLIBRARY para desenvolvimento
          allowEdit: true,
          encodingType: Camera.EncodingType.JPEG,
          targetWidth: 480,

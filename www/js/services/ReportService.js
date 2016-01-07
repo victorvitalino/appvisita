@@ -1,6 +1,6 @@
 var app = angular.module('codhab.services.ReportService', []);
 
-app.service("ReportService", function ($q, AuthService) {
+app.service("ReportService", function ($q, AuthService, $cordovaGeolocation, $ionicPopup) {
 	var self = {
 		'page': 0,
 		'page_size': '20',
@@ -23,31 +23,43 @@ app.service("ReportService", function ($q, AuthService) {
 		'load': function () {
 			self.isLoading = true;
 			var d = $q.defer();
-
-			//TODO
-
 			return d.promise;
 		},
 		'track': function (data) {
 			self.isSaving = true;
 			var d = $q.defer();
-			var point = new Parse.GeoPoint({latitude: 40.0, longitude: -30.0});
+		//	var lat = data.lat;
+			// if (typeof data.lat === "number") {
+			// 	lat = data.lat;
+			// }
+			// else {
+			// 		lat = parseFloat(data.lat);
+			// 		// this could return NaN
+			// }
+			//
+			// if (typeof data.lon === "number") {
+			// 		lon = data.lon;
+			// }
+			// else {
+			// 		lon = parseFloat(data.lon);
+			// }
+			lat = parseFloat(data.lat);
+			lon = parseFloat(data.lon);
+		  var point = new Parse.GeoPoint({latitude: lat, longitude: lon});
 			var Report = Parse.Object.extend("Report");
 			var user = AuthService.user;
 			var file = data.picture ? new Parse.File("photo.jpg", {base64: data.picture}) : null;
-
-
 			var report = new Report();
 			report.set("owner", user);
 			report.set("picture", file);
 			report.set("title", data.title);
 			report.set("created", new Date());
 			report.set("location", point);
-
+		//	report.set("fuck",lat);
 			report.save(null,{
 					success: function(){
 						console.log("Report Feito");
-						self.results.unshift(report)
+						self.results.unshift(report);
 						d.resolve(report);
 					},
 					error: function(item,error){
@@ -58,6 +70,7 @@ app.service("ReportService", function ($q, AuthService) {
 						d.reject(error);
 					}
 			});
+
 
 			return d.promise;
 		}

@@ -2,7 +2,7 @@
 	<ion-nav-buttons>
 		<button class="button button-icon ion-camera" ng-click="addPicture()"></button>
 	</ion-nav-buttons>
-	<ion-content>
+	<ion-content >
 		<form name="createForm"
 		      novalidate="novalidate"
 		      ng-submit="trackReport(createForm)"
@@ -10,6 +10,7 @@
 			<ion-list>
 				<div class="padding">
 						<!-- Category -->
+						<input type="hidden" ng-bind="addGeoLocation()">
 						<label class="item item-input item-select"
 						       ng-class="{'has-error':createForm.category.$invalid}">
 							<div class="input-label">
@@ -50,6 +51,8 @@
 					<img ng-src="data:image/jpeg;base64,{{formData.picture}}"
 						alt="" />
 				</div>
+				{{formData.lat}}
+				{{formData.lon}}
 			</div>
 
 			<div class="padding">
