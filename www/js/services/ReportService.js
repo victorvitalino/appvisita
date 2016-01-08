@@ -28,21 +28,7 @@ app.service("ReportService", function ($q, AuthService, $cordovaGeolocation, $io
 		'track': function (data) {
 			self.isSaving = true;
 			var d = $q.defer();
-		//	var lat = data.lat;
-			// if (typeof data.lat === "number") {
-			// 	lat = data.lat;
-			// }
-			// else {
-			// 		lat = parseFloat(data.lat);
-			// 		// this could return NaN
-			// }
-			//
-			// if (typeof data.lon === "number") {
-			// 		lon = data.lon;
-			// }
-			// else {
-			// 		lon = parseFloat(data.lon);
-			// }
+			// Transformar lat e o lon em float senão fode tudo. Não funciona no emulador, não sei pq pergunta pra Deus.
 			lat = parseFloat(data.lat);
 			lon = parseFloat(data.lon);
 		  var point = new Parse.GeoPoint({latitude: lat, longitude: lon});
@@ -55,7 +41,7 @@ app.service("ReportService", function ($q, AuthService, $cordovaGeolocation, $io
 			report.set("title", data.title);
 			report.set("created", new Date());
 			report.set("location", point);
-		//	report.set("fuck",lat);
+
 			report.save(null,{
 					success: function(){
 						console.log("Report Feito");
@@ -70,12 +56,8 @@ app.service("ReportService", function ($q, AuthService, $cordovaGeolocation, $io
 						d.reject(error);
 					}
 			});
-
-
 			return d.promise;
 		}
-
 	};
-
 	return self;
 });

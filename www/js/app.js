@@ -11,6 +11,7 @@ var app = angular.module('codhab', ['ionic',
 'parse-angular.enhance',
 'codhab.controllers.app',
 'codhab.controllers.map',
+'codhab.controllers.message',
 'codhab.controllers.login',
 'codhab.controllers.report',
 'codhab.services.auth',
@@ -78,6 +79,15 @@ app.config(function ($stateProvider, $urlRouterProvider,$ionicConfigProvider,  $
         'home':{
           templateUrl: "views/app/home.html",
           controller: 'AppCtrl'
+        }
+      }
+    })
+    .state('app.message',{
+      url: "/message",
+      views:{
+        'home':{
+          templateUrl: "views/app/message/message.html",
+          controller: 'messageCtrl'
         }
       }
     })

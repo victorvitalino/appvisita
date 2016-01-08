@@ -25,12 +25,12 @@ app.controller('reportCreateCtrl', function ($scope,
 
        if (form.$valid){
          $ionicLoading.show();
-         //$scope.addGeoLocation();
-           ReportService.track($scope.formData).then(function(){
+         ReportService.track($scope.formData).then(function(){
              $scope.resetFormData();
              $ionicLoading.hide();
+             form.$setPristine(true);
              $state.go("app.report");
-           });
+         });
        }
      };
 
