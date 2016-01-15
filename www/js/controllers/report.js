@@ -1,7 +1,7 @@
 var app = angular.module('codhab.controllers.report', []);
 
 /*********************************************************************
- * reportCre.ateCtrl
+ * reportCreateCtrl
  *********************************************************************/
 
 app.controller('reportCreateCtrl', function ($scope,
@@ -16,7 +16,8 @@ app.controller('reportCreateCtrl', function ($scope,
        $scope.formData = {
          'title': '',
          'lat': '',
-         'picture': null
+         'picture': null,
+         'category':''
        };
      };
      $scope.resetFormData();
@@ -33,9 +34,8 @@ app.controller('reportCreateCtrl', function ($scope,
          });
        }
      };
-
      $scope.addGeoLocation = function (){
-       $cordovaGeolocation.getCurrentPosition({timeout:10000, enableHighAccuracy:false})
+       $cordovaGeolocation.getCurrentPosition({timeout:10000, enableHighAccuracy:true})
        .then(function(position){
       	$scope.formData.lat = position.coords.latitude;
         $scope.formData.lon = position.coords.longitude;

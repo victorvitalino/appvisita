@@ -39,6 +39,7 @@ app.service("ReportService", function ($q, AuthService, $cordovaGeolocation, $io
 			report.set("owner", user);
 			report.set("picture", file);
 			report.set("title", data.title);
+			report.set("category", data.category)
 			report.set("created", new Date());
 			report.set("location", point);
 

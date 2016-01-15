@@ -1,8 +1,7 @@
-<ion-view>
-	<ion-nav-buttons class="bar bar-header">
-		<div class="h1 title">Reporte de Obras</div>
+<ion-view view-title="Nova Mensagem">
+	<!-- <ion-nav-buttons>
 		<button class="button button-icon ion-camera" ng-click="addPicture()"></button>
-	</ion-nav-buttons>
+	</ion-nav-buttons> -->
 	<ion-content >
 		<form name="createForm"
 		      novalidate="novalidate"
@@ -32,7 +31,7 @@
 				</div>
 			<div class="padding">
 					<label class="item item-input item-stacked-label" ng-class="{'has-error':createForm.title.$invalid}">
-						<span class="input-label">Descrição</span>
+						<span class="input-label">Título</span>
 						<input type="text"
 						       name="title"
 						       ng-model="formData.title"
@@ -42,15 +41,27 @@
 	        	<div ng-messages-include="views/errors/form-errors.html"></div>
 	        </div>
 				</div>
-			<div class="padding" ng-show="formData.picture">
+				<div class="padding">
+						<label class="item item-input item-stacked-label" ng-class="{'has-error':createForm.message.$invalid}">
+							<span class="input-label">Mensagem</span>
+							<input type="text"
+										 name="message"
+										 ng-model="formData.message"
+										 ng-required="true">
+						</label>
+						<div class="form-errors" ng-messages="createForm.message.$error">
+							<div ng-messages-include="views/errors/form-errors.html"></div>
+						</div>
+					</div>
+			<!-- <div class="padding" ng-show="formData.picture">
 				<div class="picture">
 					<img ng-src="data:image/jpeg;base64,{{formData.picture}}"
 						alt="" />
 				</div>
-			</div>
+			</div> -->
 
 			<div class="padding">
-				<button class="button button-positive button-block" type="submit"> Reportar </button>
+				<button class="button button-positive button-block" type="submit"> Enviar Mensagem </button>
 			</div>
 		</form>
 	</ion-content>
