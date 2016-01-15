@@ -5,11 +5,10 @@
 	<ion-content >
 		<form name="createForm"
 		      novalidate="novalidate"
-		      ng-submit="trackReport(createForm)"
+		      ng-submit="getMessage(createForm)"
 		      class="create-form">
 			<ion-list>
 				<div class="padding">
-						<input type="hidden" ng-bind="addGeoLocation()">
 						<label class="item item-input item-select" ng-class="{'has-error':createForm.category.$invalid}">
 							<div class="input-label">
 								Tipo do Problema
