@@ -83,15 +83,32 @@ app.config(function ($stateProvider, $urlRouterProvider,$ionicConfigProvider,  $
         }
       }
     })
-    .state('app.message',{
-      url: "/message",
+    .state('app.messages',{
+      url: "/messages",
       views:{
         'home':{
-          templateUrl: "views/app/message/message.html",
-          controller: 'messageCtrl'
+          templateUrl: "views/app/message/messages.html",
+          controller: 'MessageListCtrl'
         }
       }
     })
+    .state('app.message',{
+      url: "/message/:id",
+      views:{
+        'home':{
+          templateUrl: "views/app/message/message.html",
+          controller: 'MessageListCtrl'
+        }
+      }
+    })
+    .state('app.terms',{
+          url: "/terms",
+          views:{
+            'home':{
+              templateUrl: "views/app/terms.html"
+            }
+          }
+        })
     .state('app.new_message',{
       url: "/new_message",
       views:{
@@ -101,7 +118,6 @@ app.config(function ($stateProvider, $urlRouterProvider,$ionicConfigProvider,  $
         }
       }
     })
-
     .state('app.map',{
       url: "/map",
       views:{

@@ -8,29 +8,9 @@
 		      ng-submit="getMessage(createForm)"
 		      class="create-form">
 			<ion-list>
-				<div class="padding">
-						<label class="item item-input item-select" ng-class="{'has-error':createForm.category.$invalid}">
-							<div class="input-label">
-								Tipo do Problema
-							</div>
-							<select name="category"
-							        ng-model="formData.category"
-							        ng-required="true">
-								<option selected
-								        value="">Selecione...
-								</option>
-								<option value="1">Rachadura</option>
-								<option value="2">Infiltração</option>
-								<option value="3">Fiação Elétrica</option>
-							</select>
-						</label>
-						<div class="form-errors" ng-messages="createForm.category.$error">
-								<div ng-messages-include="views/errors/form-errors.html"></div>
-						</div>
-				</div>
 			<div class="padding">
 					<label class="item item-input item-stacked-label" ng-class="{'has-error':createForm.title.$invalid}">
-						<span class="input-label">Título</span>
+						<span class="input-label">Assunto</span>
 						<input type="text"
 						       name="title"
 						       ng-model="formData.title"

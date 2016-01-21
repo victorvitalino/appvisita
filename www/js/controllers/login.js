@@ -29,6 +29,7 @@ app.controller('LoginCtrl',function($scope, $state, AuthService, $cordovaFaceboo
   	$scope.formData = {
   		"name": "",
   		"email": "",
+      "cpf":"",
   		"password": ""
   	};
 
@@ -38,6 +39,7 @@ app.controller('LoginCtrl',function($scope, $state, AuthService, $cordovaFaceboo
   			console.log("SignupCtrl::signup")
   			AuthService.signup($scope.formData.email,
   				$scope.formData.name,
+          $scope.formData.cpf,
   				$scope.formData.password)
   		} else {
   			console.log("Invalid")

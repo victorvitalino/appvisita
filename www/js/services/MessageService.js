@@ -3,7 +3,8 @@ var app = angular.module('codhab.services.MessageService', []);
 app.service("MessageService", function ($q, AuthService, $ionicPopup) {
 	var self = {
 		'page': 0,
-		'page_size': '20',
+		'page_size': 20,
+		'objectId':'',
 		'isLoading': false,
 		'isSaving': false,
 		'hasMore': true,
@@ -21,8 +22,38 @@ app.service("MessageService", function ($q, AuthService, $ionicPopup) {
 			return self.load();
 		},
 		'load': function () {
+			//self.results = [];
 			self.isLoading = true;
 			var d = $q.defer();
+			// Query
+			//var Message = Parse.Object.extend("Message");
+			var messageQuery = new Parse.Query('Message');
+			messageQuery.descending('created');
+			messageQuery.equalTo("owner", AuthService.user);
+
+			//Paginar
+		//	messageQuery.skip(self.page * self.page_size);
+		//	messageQuery.limit(self.page_size);
+
+			// Realizar Query
+			messageQuery.find({
+				success: function (results){
+					angular.forEach(results, function(item){
+				//	var message = new Message(item);
+					self.results = results
+					});
+					console.debug(results);
+
+					//fim da lista
+					// if (results.length == 0){
+					// 	self.hasMore = false;
+					// }
+
+					// Fim woohoo!!!!
+					d.resolve();
+				}
+			});
+
 			return d.promise;
 		},
 		'send': function (data) {
@@ -33,7 +64,8 @@ app.service("MessageService", function ($q, AuthService, $ionicPopup) {
 			var message = new Message();
 			message.set("owner", user);
 			message.set("title", data.title);
-			message.set("category", data.category)
+			message.set("category", data.category);
+      message.set("message", data.message);
 			message.set("created", new Date());
 
 			message.save(null,{

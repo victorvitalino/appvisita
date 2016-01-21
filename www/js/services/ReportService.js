@@ -23,6 +23,32 @@ app.service("ReportService", function ($q, AuthService, $cordovaGeolocation, $io
 		'load': function () {
 			self.isLoading = true;
 			var d = $q.defer();
+			// Query
+			var Report = Parse.Object.extend("Report");
+			var reportQuery = new Parse.Query(Report);
+			reportQuery.descending('created');
+			reportQuery.equalTo("owner", AuthService.user);
+
+			// Realizar Query
+
+			reportQuery.find({
+				success: function (results){
+					angular.forEach(results, function(item){
+						var report = new Report(item);
+						self.results.push(report)
+					});
+					console.debug(self.results);
+
+					//fim da lista
+					if (results.length == 0){
+						self.hasMore = false;
+					}
+
+					// Fim woohoo!!!!
+					d.resolve();
+				}
+			});
+
 			return d.promise;
 		},
 		'track': function (data) {

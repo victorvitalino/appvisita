@@ -1,5 +1,33 @@
 var app = angular.module('codhab.controllers.report', []);
 
+
+
+/*********************************************************************
+ * ReportListCtrl
+ *********************************************************************/
+app.controller('ReportListCtrl', function ($scope, $ionicLoading, ReportService) {
+
+	$scope.reports = ReportService;
+
+	$ionicLoading.show();
+	$scope.reports.load().then(function () {
+		$ionicLoading.hide();
+	});
+
+	$scope.refreshItems = function () {
+		$scope.reports.refresh().then(function () {
+			$scope.$broadcast('scroll.refreshComplete');
+		});
+	};
+
+	$scope.nextPage = function () {
+		$scope.reports.next().then(function () {
+			$scope.$broadcast('scroll.infiniteScrollComplete');
+		});
+	};
+
+});
+
 /*********************************************************************
  * reportCreateCtrl
  *********************************************************************/

@@ -1,4 +1,4 @@
-<ion-view title="Criar Conta">
+<ion-view title="Registrar no App">
     <ion-content padding="true" class="has-header">
         <form name="signupForm"
     		      novalidate="novalidate"
@@ -24,6 +24,18 @@
                 </label>
                 <div class="form-errors"
                      ng-messages="signupForm.email.$error">
+                     <div ng-messages-include="views/errors/form-errors.html" ></div>
+                </div >
+                <label class="item item-input" ng-class="{'has-error':signupForm.cpf.$invalid}">
+                    <span class="input-label">CPF</span>
+                    <input type="text" placeholder="Preencha com um CPF válido, apenas números"
+                    name="cpf"
+                    ng-model="formData.cpf"
+                    ng-required="true"
+                    ng-maxlength="11" >
+                </label>
+                <div class="form-errors"
+                     ng-messages="signupForm.cpf.$error">
                      <div ng-messages-include="views/errors/form-errors.html" ></div>
                 </div >
                 <label class="item item-input">

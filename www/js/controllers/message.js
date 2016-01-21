@@ -1,5 +1,30 @@
 var app = angular.module('codhab.controllers.message', []);
 
+/*********************************************************************
+ * MessageListCtrl
+ *********************************************************************/
+app.controller('MessageListCtrl', function ($scope, $ionicLoading, MessageService) {
+
+	$scope.messages = MessageService;
+
+	$ionicLoading.show();
+	$scope.messages.load().then(function () {
+		$ionicLoading.hide();
+	});
+
+	$scope.refreshItems = function () {
+		$scope.messages.refresh().then(function () {
+			$scope.$broadcast('scroll.refreshComplete');
+		});
+	};
+
+	$scope.nextPage = function () {
+		$scope.messages.next().then(function () {
+			$scope.$broadcast('scroll.infiniteScrollComplete');
+		});
+	};
+
+});
 
 /*********************************************************************
  * messageCreateCtrl
