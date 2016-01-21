@@ -67,6 +67,7 @@ app.service("MessageService", function ($q, AuthService, $ionicPopup) {
 			message.set("category", data.category);
       message.set("message", data.message);
 			message.set("created", new Date());
+			message.set("status", "Recebida")
 
 			message.save(null,{
 					success: function(){

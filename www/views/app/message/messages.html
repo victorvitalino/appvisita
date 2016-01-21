@@ -1,4 +1,8 @@
-<ion-view view-title="Mensagens" >
+<ion-view>
+<ion-nav-buttons class="bar bar-header">
+	<div class="h1 title">Mensagens</div>
+	<button class="button button-icon ion-ios-paperplane" ui-sref="app.new_message"></button>
+</ion-nav-buttons>
 	<ion-content >
 
 		<ion-refresher
@@ -8,12 +12,13 @@
 
 		<ion-list class="list card item-card" ng-repeat="message in messages.results">
 
-			<ion-item class="item-avatar item-icon-right" ui-sref="message({message.id})">
+			<ion-item class="item-avatar item-icon-right" ui-sref="#">
         <img src="img/ionic.png" alt="" />
 				<h2 >{{message.attributes.title}}</h2 >
 					<p>
-						{{message.id}}
+						protocolo : {{message.id}}
 					</p>
+					<i class="badge badge-balanced">{{message.attributes.status}}</i>
 			</ion-item>
 		</ion-list>
 

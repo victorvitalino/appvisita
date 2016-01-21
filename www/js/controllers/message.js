@@ -33,6 +33,7 @@ app.controller('MessageListCtrl', function ($scope, $ionicLoading, MessageServic
 app.controller('messageCtrl', function($scope,
    $ionicPopup,
    $ionicLoading,
+	 $state,
    MessageService) {
 
   $scope.resetFormData = function(){
@@ -52,8 +53,10 @@ app.controller('messageCtrl', function($scope,
           $scope.resetFormData();
           $ionicLoading.hide();
           form.$setPristine(true);
-          $state.go("app.message");
-      });
+          //$state.go("app.message");
+      }).then(function(){
+		          $state.go("app.messages")
+		      });
     }
   };
 });
