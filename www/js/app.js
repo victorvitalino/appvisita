@@ -92,15 +92,15 @@ app.config(function ($stateProvider, $urlRouterProvider,$ionicConfigProvider,  $
         }
       }
     })
-    .state('app.message',{
-      url: "/message/:id",
-      views:{
-        'home':{
-          templateUrl: "views/app/message/message.html",
-          controller: 'MessageListCtrl'
-        }
-      }
-    })
+    // .state('app.message',{
+    //   url: "/message/:id",
+    //   views:{
+    //     'home':{
+    //       templateUrl: "views/app/message/message.html",
+    //       controller: 'MessageListCtrl'
+    //     }
+    //   }
+    // })
     .state('app.terms',{
           url: "/terms",
           views:{
