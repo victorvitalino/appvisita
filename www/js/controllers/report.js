@@ -43,6 +43,7 @@ app.controller('reportCreateCtrl', function ($scope,
      $scope.resetFormData = function(){
        $scope.formData = {
          'title': '',
+				 'description':'',
          'lat': '',
          'picture': null,
          'category':''
