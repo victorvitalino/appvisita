@@ -36,7 +36,7 @@ app.run(function($ionicPlatform) {
       StatusBar.styleDefault();
     }
 
-    Parse.initialize("0nHHDsgXpUZieEkv46JhEKgk8fXUkKn8aDNpyqZP", "r4pMXbjMUVCrqcSzh25W1J1U3yJ5U4rjG6kdCwry");
+    Parse.initialize("IwSJQSH8F3LY5kO4ITNN9FBg9DZzjRu2CMNOYver", "YAIoNghlxEfe2MctJtMKGhqf4mkR6HTL1b9Ql20A");
 
       window.fbAsyncInit = function() {
           Parse.FacebookUtils.init({

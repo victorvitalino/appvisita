@@ -36,7 +36,7 @@ app.controller('LoginCtrl',function($scope, $state, AuthService, $cordovaFaceboo
   	$scope.signup = function (form) {
   		if (form.$valid){
 
-  			console.log("SignupCtrl::signup")
+  			console.log("SignupCtrl::signup a")
   			AuthService.signup($scope.formData.email,
   				$scope.formData.name,
           $scope.formData.cpf,
