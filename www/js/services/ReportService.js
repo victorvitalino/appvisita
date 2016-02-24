@@ -62,18 +62,36 @@ app.service("ReportService", function ($q, AuthService, $cordovaGeolocation, $io
 			var user = AuthService.user;
 			var file = data.picture ? new Parse.File("photo.jpg", {base64: data.picture}) : null;
 			var report = new Report();
+			report.set("logradouro",data.logradouro);
+			report.set("cnpj", data.cnpj);
+			report.set("presidente", data.presidente);
+			report.set("confirmacao_endereco", data.confirmacao_endereco);
+			report.set("created", new Date());
+			report.set("observacoes", data.observacoes);
+			report.set("celular", data.celular);
+			report.set("associados", data.associados);
+			report.set("associados_habitacionais", data.associados_habitacionais);
+			report.set("n_ambientes", data.n_ambientes);
+			report.set("sala_presi", data.sala_presi);
+			report.set("sala_diretor", data.sala_diretor);
+			report.set("sala_reuniao", data.sala_reuniao);
+		//	report.set("assembleias", data.assembleias);
+			report.set("reuniao_ordinaria", data.reuniao_ordinaria);
+			report.set("reuniao_extraordinaria", data.reuniao_extraordinaria);
+			report.set("vinculacao", data.vinculacao);
 			report.set("owner", user);
 			report.set("picture", file);
-			report.set("reply",false);
-			report.set("description", data.description);
-			report.set("category", data.category)
-			report.set("created", new Date());
-			report.set("location", point);
-
+			if (lat != ''){
+				report.set("localizacao",point);
+			}
 			report.save(null,{
 					success: function(){
 						console.log("Report Feito");
 						self.results.unshift(report);
+						$ionicPopup.alert({
+							title: "Report feito com sucesso",
+							subTitle: "você será redirecionado"
+						})
 						d.resolve(report);
 					},
 					error: function(item,error){

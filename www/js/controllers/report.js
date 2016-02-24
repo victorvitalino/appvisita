@@ -42,11 +42,25 @@ app.controller('reportCreateCtrl', function ($scope,
 
      $scope.resetFormData = function(){
        $scope.formData = {
-         'title': '',
-				 'description':'',
+         'logradouro': '',
+				 'cnpj':'',
+				 'confirmacao_endereco':'',
+				 'observacoes':'',
+				 'presidente':'',
+				 'celular':'',
+				 'associados':'',
+				 'associados_habitacionais':'',
+				 'n_ambientes':'',
+				 'sala_presi':'',
+				 'sala_diretor':'',
+				 'sala_reuniao':'',
+				 'assembleias':'',
+				 'reuniao_ordinaria':'',
+				 'reuniao_extraordinaria':'',
+				 'vinculacao':'',
          'lat': '',
-         'picture': null,
-         'category':''
+				 'lon':'',
+         'picture': null
        };
      };
      $scope.resetFormData();
@@ -64,11 +78,12 @@ app.controller('reportCreateCtrl', function ($scope,
        }
      };
      $scope.addGeoLocation = function (){
-       $cordovaGeolocation.getCurrentPosition({timeout:10000, enableHighAccuracy:true})
+       $cordovaGeolocation.getCurrentPosition({timeout:15000, enableHighAccuracy:true})
        .then(function(position){
       	$scope.formData.lat = position.coords.latitude;
         $scope.formData.lon = position.coords.longitude;
-        console.log($scope.formData.lat);
+    //    console.log($scope.formData.lat);
+		//		console.log($scope.formData.lon);
       }, function (err){
         console.log(err);
       });

@@ -1,6 +1,6 @@
 <ion-view>
 	<ion-nav-buttons class="bar bar-header">
-		<div class="h1 title">Reporte de Obras</div>
+		<div class="h1 title">Reporte</div>
 		<button class="button button-icon ion-camera" ng-click="addPicture()"></button>
 	</ion-nav-buttons>
 	<ion-content >
@@ -15,8 +15,7 @@
 							<span class="input-label">CNPJ</span>
 							<input type="text"
 										 name="cnpj"
-										 ng-model="formData.cnpj"
-										 ng-required="true">
+										 ng-model="formData.cnpj">
 						</label>
 						<div class="form-errors" ng-messages="createForm.cnpj.$error">
 							<div ng-messages-include="views/errors/form-errors.html"></div>
@@ -29,8 +28,7 @@
 								Tipo de Logradouro
 							</div>
 							<select name="logradouro"
-											ng-model="formData.logradouro"
-											ng-required="true">
+											ng-model="formData.logradouro">
 								<option selected
 												value="">Selecione...
 								</option>
@@ -47,13 +45,12 @@
 								Endereço confere com CNPJ?
 							</div>
 							<select name="confirmacao_endereco"
-											ng-model="formData.confirmacao_endereco"
-											ng-required="true">
+											ng-model="formData.confirmacao_endereco">
 								<option selected
 												value="">Selecione...
 								</option>
-								<option value="Sim">Sim</option>
-								<option value="Não">Não</option>
+								<option value="sim">Sim</option>
+								<option value="não">Não</option>
 							</select>
 						</label>
 						<div class="form-errors" ng-messages="createForm.confirmacao_endereco.$error">
@@ -62,7 +59,7 @@
 						<!-- Observações-->
 						<label class="item item-input " ng-class="{'has-error':createForm.observacoes.$invalid}">
 							<span class="input-label">Observações</span>
-							<textarea name="observacoes" rows="8" ng-model="formData.observacoes" ng-required="true"></textarea>
+							<textarea name="observacoes" rows="8" ng-model="formData.observacoes"></textarea>
 						</label>
 						<div class="form-errors" ng-messages="createForm.observacoes.$error">
 							<div ng-messages-include="views/errors/form-errors.html"></div>
@@ -73,7 +70,7 @@
 								<input type="text"
 											 name="title"
 											 ng-model="formData.presidente"
-											 ng-required="true">
+											  >
 							</label>
 							<div class="form-errors" ng-messages="createForm.presidente.$error">
 								<div ng-messages-include="views/errors/form-errors.html"></div>
@@ -84,7 +81,7 @@
 									<input type="text"
 												 name="title"
 												 ng-model="formData.celular"
-												 ng-required="true">
+												  >
 								</label>
 								<div class="form-errors" ng-messages="createForm.celular.$error">
 									<div ng-messages-include="views/errors/form-errors.html"></div>
@@ -95,7 +92,7 @@
 									<input type="text"
 												 name="title"
 												 ng-model="formData.associados"
-												 ng-required="true">
+												  >
 								</label>
 								<div class="form-errors" ng-messages="createForm.associados.$error">
 									<div ng-messages-include="views/errors/form-errors.html"></div>
@@ -106,7 +103,7 @@
 									<input type="text"
 												 name="title"
 												 ng-model="formData.associados_habitacionais"
-												 ng-required="true">
+												  >
 								</label>
 								<div class="form-errors" ng-messages="createForm.associados_habitacionais.$error">
 									<div ng-messages-include="views/errors/form-errors.html"></div>
@@ -114,7 +111,7 @@
 						<!-- nº de ambientes -->
 						<label class="item item-input " ng-class="{'has-error':createForm.n_ambientes.$invalid}">
 							<span class="input-label">Nº de Ambientes</span>
-							<input type="text" name="n_ambientes" ng-model="formData.n_ambientes" ng-required="true">
+							<input type="text" name="n_ambientes" ng-model="formData.n_ambientes"  >
 						</label>
 						<div class="form-errors" ng-messages="createForm.n_ambientes.$error">
 							<div ng-messages-include="views/errors/form-errors.html"></div>
@@ -126,12 +123,12 @@
 							</div>
 							<select name="sala_presi"
 											ng-model="formData.sala_presi"
-											ng-required="true">
+											 >
 								<option selected
 												value="">Selecione...
 								</option>
-								<option value="Sim">Sim</option>
-								<option value="Não">Não</option>
+								<option value="sim">Sim</option>
+								<option value="não">Não</option>
 							</select>
 						</label>
 						<div class="form-errors" ng-messages="createForm.sala_presi.$error">
@@ -143,12 +140,12 @@
 							</div>
 							<select name="sala_diretor"
 											ng-model="formData.sala_diretor"
-											ng-required="true">
+											 >
 								<option selected
 												value="">Selecione...
 								</option>
-								<option value="Sim">Sim</option>
-								<option value="Não">Não</option>
+								<option value="sim">Sim</option>
+								<option value="não">Não</option>
 							</select>
 						</label>
 						<div class="form-errors" ng-messages="createForm.sala_diretor.$error">
@@ -160,12 +157,12 @@
 							</div>
 							<select name="sala_reuniao"
 											ng-model="formData.sala_reuniao"
-											ng-required="true">
+											 >
 								<option selected
 												value="">Selecione...
 								</option>
-								<option value="Sim">Sim</option>
-								<option value="Não">Não</option>
+								<option value="sim">Sim</option>
+								<option value="não">Não</option>
 							</select>
 						</label>
 						<div class="form-errors" ng-messages="createForm.sala_reuniao.$error">
@@ -173,19 +170,19 @@
 						</div>
 						<!-- Assembleias -->
 						<label class="item item-input " ng-class="{'has-error':createForm.assembleias.$invalid}">
-							<span class="input-label">Onde realiza suas assembleias?</span>
-							<input type="text" name="assembleias" ng-model="formData.assembleias" ng-required="true">
+							<span class="input-label">Local das Assembleias</span>
+							<input type="text" name="assembleias" ng-model="formData.assembleias"  >
 						</label>
 						<div class="form-errors" ng-messages="createForm.assembleias.$error">
 							<div ng-messages-include="views/errors/form-errors.html"></div>
 						</div>
+
+
 						<label class="item item-input item-select" ng-class="{'has-error':createForm.reuniao_ordinaria.$invalid}">
 							<div class="input-label">
 								Periodicidade das reuniões ordinárias
 							</div>
-							<select name="reuniao_ordinaria"
-											ng-model="formData.reuniao_ordinaria"
-											ng-required="true">
+							<select name="reuniao_ordinaria" ng-model="formData.reuniao_ordinaria">
 								<option selected
 												value="">Selecione...
 								</option>
@@ -200,9 +197,7 @@
 							<div class="input-label">
 								Periodicidade das reuniões extraordinárias
 							</div>
-							<select name="reuniao_extraordinaria"
-											ng-model="formData.reuniao_extraordinaria"
-											ng-required="true">
+							<select name="reuniao_extraordinaria" ng-model="formData.reuniao_extraordinaria">
 								<option selected
 												value="">Selecione...
 								</option>
@@ -217,14 +212,10 @@
 							<div class="input-label">
 								Vinculação a outra entidade?
 							</div>
-							<select name="vinculacao"
-											ng-model="formData.vinculacao"
-											ng-required="true">
-								<option selected
-												value="">Selecione...
-								</option>
-								<option value="Sim">Sim</option>
-								<option value="Não">Não</option>
+							<select name="vinculacao" ng-model="formData.vinculacao">
+								<option selected value="">Selecione...</option>
+								<option value="sim">Sim</option>
+								<option value="não">Não</option>
 							</select>
 						</label>
 						<div class="form-errors" ng-messages="createForm.vinculacao.$error">

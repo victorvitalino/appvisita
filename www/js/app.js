@@ -57,7 +57,7 @@ app.run(function($ionicPlatform) {
   });
 });
 
-app.config(function ($stateProvider, $urlRouterProvider,$ionicConfigProvider,  $cordovaFacebookProvider) {
+app.config(function ($stateProvider, $urlRouterProvider,$ionicConfigProvider, $cordovaFacebookProvider) {
 	$stateProvider
     .state('signup',{
       url: "/signup",
@@ -69,77 +69,10 @@ app.config(function ($stateProvider, $urlRouterProvider,$ionicConfigProvider,  $
       templateUrl:"views/login/login.html",
       controller: 'LoginCtrl'
     })
-		.state('app', {
-			url: "/app",
-      abstract: true,
-			templateUrl: "views/app/side.html"
-		})
-    .state('app.home', {
-      url: "/home",
-      views:{
-        'home':{
-          templateUrl: "views/app/home.html",
-          controller: 'AppCtrl'
-        }
-      }
-    })
-    .state('app.messages',{
-      url: "/messages",
-      views:{
-        'home':{
-          templateUrl: "views/app/message/messages.html",
-          controller: 'MessageListCtrl'
-        }
-      }
-    })
-    // .state('app.message',{
-    //   url: "/message/:id",
-    //   views:{
-    //     'home':{
-    //       templateUrl: "views/app/message/message.html",
-    //       controller: 'MessageListCtrl'
-    //     }
-    //   }
-    // })
-    .state('app.terms',{
-          url: "/terms",
-          views:{
-            'home':{
-              templateUrl: "views/app/terms.html"
-            }
-          }
-        })
-    .state('app.new_message',{
-      url: "/new_message",
-      views:{
-        'home':{
-          templateUrl: "views/app/message/new_message.html",
-          controller: 'messageCtrl'
-        }
-      }
-    })
-    .state('app.map',{
-      url: "/map",
-      views:{
-        'home':{
-          templateUrl: "views/app/map/map.html",
-          controller: 'MapCtrl'
-        }
-      }
-    })
-    .state('app.report',{
+    .state('report',{
       url: "/report",
-      views:{
-        'home':{
-          templateUrl: "views/app/report/report.html",
-          controller: 'reportCreateCtrl'
-        }
-      }
-    })
-    .state('tab', {
-      url: "/tab",
-      abstract: true,
-      templateUrl: "views/app/tabs.html"
+      templateUrl: "views/app/report/report.html",
+      controller: 'reportCreateCtrl'
     })
 	;
 

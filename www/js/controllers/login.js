@@ -16,7 +16,7 @@ app.controller('LoginCtrl',function($scope, $state, AuthService, $cordovaFaceboo
       console.log("LoginCtrl::login");
       AuthService.login($scope.formData.email, $scope.formData.password)
       .then(function(){
-          $state.go("app.home")
+          $state.go("report")
       });
       }
     };
